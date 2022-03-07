@@ -64,6 +64,8 @@ class CheckoutController extends Controller
                             'jam' => $jam,
                             'status'=> 0,
                             'foto'=> $request->foto,
+                            'hargacicilan'=> $request->hargacicilan,
+                            'jumlahcicilan'=> $request->jumlahcicilan,
                         ]);
                 $response = [
                     'message' => 'Checkout data berhasil',

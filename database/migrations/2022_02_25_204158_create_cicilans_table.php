@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTransaksisTable extends Migration
+class CreateCicilansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,8 @@ class CreateTransaksisTable extends Migration
      */
     public function up()
     {
-        Schema::create('transaksis', function (Blueprint $table) {
+        Schema::create('cicilans', function 
+        (Blueprint $table) {
             $table->id();
             $table->string('nama');
             $table->string('telepon');
@@ -25,8 +26,13 @@ class CreateTransaksisTable extends Migration
             $table->date('tanggal');
             $table->time('jam');
             $table->integer('status');
-            $table->integer('hargacicilan')->nullable();
-            $table->integer('jumlahcicilan')->nullable();
+            $table->date('jatuhtempo1');
+            $table->date('jatuhtempo2');
+            $table->date('jatuhtempo3');
+            $table->date('jatuhtempo4');
+            $table->integer('statuscicilan');
+            $table->integer('hargacicilan');
+            $table->integer('jumlahcicilan');
             $table->string('idusers');
             $table->string('foto')->nullable();
             $table->timestamps();
@@ -40,6 +46,6 @@ class CreateTransaksisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaksis');
+        Schema::dropIfExists('cicilans');
     }
 }

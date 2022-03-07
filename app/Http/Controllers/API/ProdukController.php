@@ -24,6 +24,7 @@ class ProdukController extends Controller
             'mingrosir' => 'required|max:255',
             'maxgrosir' => 'required|max:255',
             'harga' => 'required|max:255',
+            'kategori' => 'required|max:255',
             'hargagrosir' => 'required|max:255'
             ]);
 
@@ -44,6 +45,7 @@ class ProdukController extends Controller
                 'mingrosir' => $request->mingrosir,
                 'maxgrosir' => $request->maxgrosir,
                 'harga' => $request->harga,
+                'kategori' => $request->kategori,
                 'hargagrosir' => $request->hargagrosir,
                 'rating' => 0,
             ]);
@@ -70,6 +72,16 @@ class ProdukController extends Controller
             return response()->json($response,Response::HTTP_OK);
     }
 
+    public function getprodukoption(Request $request)
+    {
+        $getdata = DB::table('produks')->where('kategori',$request->input('kategori'))->orderBy('created_at','DESC')->get();
+         $response = [
+                'message' => 'getdata',
+                'data' => $getdata
+         ];        
+            return response()->json($response,Response::HTTP_OK);
+    }
+
     public function updateproduct(Request $request)
     {
     
@@ -79,6 +91,7 @@ class ProdukController extends Controller
                 'foto' => $request->foto,
                 'deskripsi' => $request->deskripsi,
                 'stok' => $request->stok,
+                'kategori' => $request->kategori,
                 'mingrosir' => $request->mingrosir,
                 'maxgrosir' => $request->maxgrosir,
                 'harga' => $request->harga,

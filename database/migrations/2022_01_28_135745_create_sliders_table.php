@@ -15,10 +15,16 @@ class CreateSlidersTable extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->bigInteger('harga');
+            $table->text('deskripsi');
             $table->string('foto');
-            $table->string('nama')->nullable();
-            $table->string('nomorpesanan')->nullable();
-            $table->string('tujuan')->nullable();
+            $table->string('foto_produk');
+            $table->float('rating')->nullable();
+            $table->integer('stok');
+            $table->foreignId('id_produk');
+            $table->foreign('id_produk')->references('id')->on('produks')->onDelete('cascade')->onUpdate('cascade');
+        
             $table->timestamps();
         });
     }

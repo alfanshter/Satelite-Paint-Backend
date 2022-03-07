@@ -6,6 +6,7 @@ use App\Http\Controllers\API\CheckoutController;
 use App\Http\Controllers\API\GambarController;
 use App\Http\Controllers\API\ProdukController;
 use App\Http\Controllers\API\SliderController;
+use App\Http\Controllers\CicilanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -49,11 +50,23 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/getgambarcustomer', [GambarController::class, 'getgambarcustomer']);
 
     Route::get('/getproduct', [ProdukController::class, 'getproduct']);
+    Route::get('/getprodukoption/{kategori?}', [ProdukController::class, 'getprodukoption']);
     //checkout
     Route::post('/checkout', [CheckoutController::class, 'checkout']);
     Route::get('/getdetailtransaksi/{idusers?&nomorpesanan?}', [CheckoutController::class, 'getdetailtransaksi']);
     Route::get('/getprodukcheckout/{idusers?&nomorpesanan?}', [CheckoutController::class, 'getprodukcheckout']);
     Route::get('/gettransaksibyidusers/{idusers?}', [CheckoutController::class, 'gettransaksibyidusers']);
+
+    //Cicilan
+    Route::post('/cicilan', [CicilanController::class, 'cicilan']);
+    Route::post('/updatestatuscicilan', [CicilanController::class, 'updatestatuscicilan']);
+    Route::post('/updatejatuhtempo', [CicilanController::class, 'updatejatuhtempo']);
+    Route::post('/updatesudahbayar', [CicilanController::class, 'updatesudahbayar']);
+    Route::post('/finishcicilan', [CicilanController::class, 'finishcicilan']);
+    Route::get('/getcicilan', [CicilanController::class, 'getcicilan']);
+    Route::get('/getcicilanakun/{idusers?}', [CicilanController::class, 'getcicilanakun']);
+    Route::get('/readbayarcicilan/{nomorpesanan?}', [CicilanController::class, 'readbayarcicilan']);
+    Route::get('/getsumcicilanakun/{nomorpesanan?}', [CicilanController::class, 'getsumcicilanakun']);
 
     //Cat
     Route::post('/addcart', [CartController::class, 'addcart']);

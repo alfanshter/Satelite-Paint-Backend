@@ -14,12 +14,7 @@ class SliderController extends Controller
     public function insertslider(Request $request)
     {
         try {
-                $slider = slider::create([
-                            'nama' => $request->nama,
-                            'foto' => $request->foto,
-                            'tujuan' => $request->deskripsi,
-                            'nomorpesanan' => $request->stok   
-                            ]);
+                $slider = slider::create($request->all());
 
                 $response = [
                 'message' => 'Input data berhasil',

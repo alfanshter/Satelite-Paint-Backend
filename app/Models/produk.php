@@ -17,6 +17,7 @@ class produk extends Model
         'mingrosir',
         'maxgrosir',
         'harga',
+        'kategori',
         'hargagrosir',
         'rating',
     ];

@@ -24,6 +24,7 @@ class CreateProduksTable extends Migration
             $table->bigInteger('harga');
             $table->bigInteger('hargagrosir')->nullable();
             $table->float('rating')->nullable();
+            $table->enum('kategori',['Thinner B Special','Thinner A','Thinner A Special','Spiritus','Rockstar','Produk Lainnya'])->nullable();
             $table->timestamps();
         });
     }
